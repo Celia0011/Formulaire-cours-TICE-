@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours de TICE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons button:hover {
+            background-color: #ddd;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="page1">
+        <h1>Cours de TICE</h1>
+        <div class="question">
+            <h2>1. Coche les cours/atelier/activités auxquels tu as assisté (l'année dernière)</h2>
+            <label><input type="checkbox" name="courses" value="Atelier « Communiquer avec les parents » en découvrant des outils d’espace numérique de travail"> Atelier « Communiquer avec les parents » en découvrant des outils d’espace numérique de travail</label><br>
+            <label><input type="checkbox" name="courses" value="Atelier « À la découverte de Canva »"> Atelier « À la découverte de Canva »</label><br>
+            <label><input type="checkbox" name="courses" value="Atelier « Réalisation d’un livre numérique »"> Atelier « Réalisation d’un livre numérique »</label><br>
+            <label><input type="checkbox" name="courses" value="Atelier « Réalisation affiche de sensibilisation “mon enfant est accro aux écrans, à l’aide” »"> Atelier « Réalisation affiche de sensibilisation “mon enfant est accro aux écrans, à l’aide” »</label><br>
+            <label><input type="checkbox" name="courses" value="Atelier « Réalisation d’un semainier » en choisissant les bons pictogrammes"> Atelier « Réalisation d’un semainier » en choisissant les bons pictogrammes</label><br>
+            <label><input type="checkbox" name="courses" value="Présentation de diverses activités réalisées en petits groupes (« comme un bruiteur », « une image de mon école », « musiques et émotions », etc.)"> Présentation de diverses activités réalisées en petits groupes (« comme un bruiteur », « une image de mon école », « musiques et émotions », etc.)</label><br>
+            <label><input type="checkbox" name="courses" value="Atelier « Rechercher et s’inspirer, c’est aussi ça le métier » : partage des sites de ressources utiles"> Atelier « Rechercher et s’inspirer, c’est aussi ça le métier » : partage des sites de ressources utiles</label><br>
+            <label><input type="checkbox" name="courses" value="Atelier « Animer un dessin » avec l’IA"> Atelier « Animer un dessin » avec l’IA</label><br>
+            <label><input type="checkbox" name="courses" value="Atelier « La Digitale », découverte de la boîte à outils libres pour l’éducation"> Atelier « La Digitale », découverte de la boîte à outils libres pour l’éducation</label><br>
+            <label><input type="checkbox" name="courses" value="Réalisation d’une vidéo (montage + prises)"> Réalisation d’une vidéo (montage + prises)</label><br>
+        </div>
+        <div class="question">
+            <h2>2. Coche les cours/atelier/activités auxquels tu as assisté (cette année)</h2>
+            <label><input type="checkbox" name="courses" value="Atelier « Word »"> Atelier « Word »</label><br>
+            <label><input type="checkbox" name="courses" value="Atelier « Genially »"> Atelier « Genially »</label><br>
+            <label><input type="checkbox" name="courses" value="Atelier « PowerPoint »"> Atelier « PowerPoint »</label><br>
+            <label><input type="checkbox" name="courses" value="Atelier « Canva » spécial présentation"> Atelier « Canva » spécial présentation</label><br>
+            <label><input type="checkbox" name="courses" value="Cours sur l’intelligence artificielle (historique et utilisation)"> Cours sur l’intelligence artificielle (historique et utilisation)</label><br>
+            <label><input type="checkbox" name="courses" value="Cours sur CleverTouch"> Cours sur CleverTouch</label><br>
+            <label><input type="checkbox" name="courses" value="Atelier « Learning Apps, Tiny Tap, Plickers, Beebot, Plickers… »"> Atelier « Learning Apps, Tiny Tap, Plickers, Beebot, Plickers… »</label><br>
+            <label><input type="checkbox" name="courses" value="« Écran Large sur Tableau Noir » – visionnage de Yuku et la Fleur de l’Himalaya"> « Écran Large sur Tableau Noir » – visionnage de Yuku et la Fleur de l’Himalaya</label><br>
+            <label><input type="checkbox" name="courses" value="Exploitation du film d’animation"> Exploitation du film d’animation</label><br>
+        </div>
+        <div class="buttons">
+            <button onclick="nextPage(2)">Suivant</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="page2">
+        <div class="question">
+            <h2>3. Coche les activités / ateliers qui ont été :</h2>
+            <ul>
+                <li>Intéressant.es pour tes compétences en numérique</li>
+                <li>Intéressant.es pour leur transposabilité dans ta classe</li>
+                <li>Intéressant.es en tant que découverte d'outils utiles dans ta future profession.</li>
+            </ul>
+            <div id="useful-courses"></div>
+        </div>
+        <div class="question">
+            <h2>4. Revenons uniquement sur les outils utilisés durant les cours (pas sur les ateliers). Quels sont ceux que vous avez testés en classe ?</h2>
+            <label><input type="checkbox" name="tools" value="Canva"> Canva</label><br>
+            <label><input type="checkbox" name="tools" value="Digipad (mur collaboratif de votre examen de l'année passée)"> Digipad (mur collaboratif de votre examen de l'année passée)</label><br>
+            <label><input type="checkbox" name="tools" value="Klassroom (// Classdojo…)"> Klassroom (// Classdojo…)</label><br>
+            <label><input type="checkbox" name="tools" value="BookCreator"> BookCreator</label><br>
+            <label><input type="checkbox" name="tools" value="Logiciel de montage vidéo (RecorderCast, Clipchamp, CapCut…)"> Logiciel de montage vidéo (RecorderCast, Clipchamp, CapCut…)</label><br>
+            <label><input type="checkbox" name="tools" value="Audacity"> Audacity</label><br>
+            <label><input type="checkbox" name="tools" value="Animated IA (IA pour animer un dessin)"> Animated IA (IA pour animer un dessin)</label><br>
+            <label><input type="checkbox" name="tools" value="La Digitale (avatar, QR Code, Digipad…)"> La Digitale (avatar, QR Code, Digipad…)</label><br>
+            <label><input type="checkbox" name="tools" value="Word pour le TFE"> Word pour le TFE</label><br>
+            <label><input type="checkbox" name="tools" value="Genially"> Genially</label><br>
+            <label><input type="checkbox" name="tools" value="PowerPoint"> PowerPoint</label><br>
+            <label><input type="checkbox" name="tools" value="Learning Apps (création d’exercices numériques sur tablette)"> Learning Apps (création d’exercices numériques sur tablette)</label><br>
+            <label><input type="checkbox" name="tools" value="Tiny Tap (// Learning Apps, mais payant)"> Tiny Tap (// Learning Apps, mais payant)</label><br>
+            <label><input type="checkbox" name="tools" value="Plickers (outil qui scanne les QR codes des élèves pour connaître les réponses)"> Plickers (outil qui scanne les QR codes des élèves pour connaître les réponses)</label><br>
+            <label><input type="checkbox" name="tools" value="MagicSchool IA (IA dans l’enseignement)"> MagicSchool IA (IA dans l’enseignement)</label><br>
+            <label><input type="checkbox" name="tools" value="ClassroomScreen (tableau interactif avec niveau sonore/feu rouge…)"> ClassroomScreen (tableau interactif avec niveau sonore/feu rouge…)</label><br>
+            <label><input type="checkbox" name="tools" value="Beebot (abeille pour travailler l’algorithme en maternelle)"> Beebot (abeille pour travailler l’algorithme en maternelle)</label><br>
+            <label><input type="checkbox" name="tools" value="CleverTouch (TBI) et Lynx (logiciel utilisé sur cet outil)"> CleverTouch (TBI) et Lynx (logiciel utilisé sur cet outil)</label><br>
+        </div>
+        <div class="buttons">
+            <button onclick="prevPage(1)">Précédent</button>
+            <button onclick="nextPage(3)">Suivant</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="page3">
+        <div class="question">
+            <h2>5. Coche les outils qui ont été intéressants et qui te seront utiles dans ta future profession.</h2>
+            <div id="useful-tools"></div>
+        </div>
+        <div class="question">
+            <h2>6. Considères-tu avoir vu une évolution de tes compétences numériques à la suite des cours de TICE ?</h2>
+            <label><input type="radio" name="evolution" value="Oui"> Oui</label><br>
+            <label><input type="radio" name="evolution" value="Non"> Non</label><br>
+            <label><input type="radio" name="evolution" value="J'ai assisté à trop peu de cours que pour pouvoir me prononcer."> J'ai assisté à trop peu de cours que pour pouvoir me prononcer.</label><br>
+        </div>
+        <div class="question">
+            <h2>7. Considères-tu avoir vu une évolution de tes connaissances en outils numériques utilisables en tant qu'institutrice.eur S1 ?</h2>
+            <label><input type="radio" name="knowledge" value="Oui"> Oui</label><br>
+            <label><input type="radio" name="knowledge" value="Non"> Non</label><br>
+            <label><input type="radio" name="knowledge" value="J'ai assisté à trop peu de cours que pour pouvoir me prononcer."> J'ai assisté à trop peu de cours que pour pouvoir me prononcer.</label><br>
+        </div>
+        <div class="buttons">
+            <button onclick="prevPage(2)">Précédent</button>
+            <button onclick="nextPage(4)">Suivant</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="page4">
+        <div class="question">
+            <h2>8. Commentaire.s ?</h2>
+            <textarea name="comments" rows="5" cols="50"></textarea>
+        </div>
+        <div class="buttons">
+            <button onclick="prevPage(3)">Précédent</button>
+            <button onclick="submitForm()">Soumettre</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="thankyou">
+        <h2>Merci pour vos réponses et merci à vous pour ces deux belles années :)</h2>
+        <p>J'espère avoir l'occasion de vous revoir, et cette fois, en tant que maître de stage !</p>
+        <p>🫶</p>
+    </div>
+
+    <script>
+        function nextPage(pageNumber) {
+            updateUsefulCourses();
+            updateUsefulTools();
+            document.querySelectorAll('.container').forEach(container => container.classList.add('hidden'));
+            document.getElementById('page' + pageNumber).classList.remove('hidden');
+        }
+
+        function prevPage(pageNumber) {
+            document.querySelectorAll('.container').forEach(container => container.classList.add('hidden'));
+            document.getElementById('page' + pageNumber).classList.remove('hidden');
+        }
+
+        function updateUsefulCourses() {
+            const selectedCourses = Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(input => input.value);
+            const usefulCoursesDiv = document.getElementById('useful-courses');
+            usefulCoursesDiv.innerHTML = '';
+            selectedCourses.forEach(course => {
+                const label = document.createElement('label');
+                label.innerHTML = `<input type="checkbox" name="useful-courses" value="${course}"> ${course}<br>`;
+                usefulCoursesDiv.appendChild(label);
+            });
+        }
+
+        function updateUsefulTools() {
+            const selectedTools = Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(input => input.value);
+            const usefulToolsDiv = document.getElementById('useful-tools');
+            usefulToolsDiv.innerHTML = '';
+            selectedTools.forEach(tool => {
+                const label = document.createElement('label');
+                label.innerHTML = `<input type="checkbox" name="useful-tools" value="${tool}"> ${tool}<br>`;
+                usefulToolsDiv.appendChild(label);
+            });
+        }
+
+        function submitForm() {
+            const formData = new FormData();
+            formData.append('courses', Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(input => input.value).join(', '));
+            formData.append('useful-courses', Array.from(document.querySelectorAll('input[name="useful-courses"]:checked')).map(input => input.value).join(', '));
+            formData.append('tools', Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(input => input.value).join(', '));
+            formData.append('useful-tools', Array.from(document.querySelectorAll('input[name="useful-tools"]:checked')).map(input => input.value).join(', '));
+            formData.append('evolution', document.querySelector('input[name="evolution"]:checked').value);
+            formData.append('knowledge', document.querySelector('input[name="knowledge"]:checked').value);
+            formData.append('comments', document.querySelector('textarea[name="comments"]').value);
+
+            // Display the thank you message
+            document.querySelectorAll('.container').forEach(container => container.classList.add('hidden'));
+            document.getElementById('thankyou').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
