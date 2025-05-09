@@ -190,20 +190,44 @@
             });
         }
 
-        function submitForm() {
-            const formData = new FormData();
-            formData.append('courses', Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(input => input.value).join(', '));
-            formData.append('useful-courses', Array.from(document.querySelectorAll('input[name="useful-courses"]:checked')).map(input => input.value).join(', '));
-            formData.append('tools', Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(input => input.value).join(', '));
-            formData.append('useful-tools', Array.from(document.querySelectorAll('input[name="useful-tools"]:checked')).map(input => input.value).join(', '));
-            formData.append('evolution', document.querySelector('input[name="evolution"]:checked').value);
-            formData.append('knowledge', document.querySelector('input[name="knowledge"]:checked').value);
-            formData.append('comments', document.querySelector('textarea[name="comments"]').value);
+       
+function submitForm() {
+    const evolution = document.querySelector('input[name="evolution"]:checked');
+    const knowledge = document.querySelector('input[name="knowledge"]:checked');
 
-            // Display the thank you message
-            document.querySelectorAll('.container').forEach(container => container.classList.add('hidden'));
-            document.getElementById('thankyou').classList.remove('hidden');
-        }
+    if (!evolution || !knowledge) {
+        alert("Merci de répondre aux questions 6 et 7 avant de soumettre.");
+        return;
+    }
+
+    const formData = {
+        courses: Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(input => input.value).join(', '),
+        usefulCourses: Array.from(document.querySelectorAll('input[name="useful-courses"]:checked')).map(input => input.value).join(', '),
+        tools: Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(input => input.value).join(', '),
+        usefulTools: Array.from(document.querySelectorAll('input[name="useful-tools"]:checked')).map(input => input.value).join(', '),
+        evolution: evolution.value,
+        knowledge: knowledge.value,
+        comments: document.querySelector('textarea[name="comments"]').value
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbwZT5vdyD5oU-FNeSksc5Yc1BwPbysEKxdRHcnIJpEaK-085xNS0mO70ESmwSl1ex835w/exec', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.querySelectorAll('.container').forEach(container => container.classList.add('hidden'));
+        document.getElementById('thankyou').classList.remove('hidden');
+    })
+    .catch(error => {
+        console.error('Erreur lors de l’envoi du formulaire :', error);
+        alert('Une erreur est survenue. Merci de réessayer.');
+    });
+}
+
     </script>
 </body>
 </html>
