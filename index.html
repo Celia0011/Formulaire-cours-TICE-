@@ -201,7 +201,7 @@ function submitForm() {
     formData.append('knowledge', document.querySelector('input[name="knowledge"]:checked')?.value || '');
     formData.append('comments', document.querySelector('textarea[name="comments"]').value);
 
-    // Champs dynamiques générés par JavaScript
+    // Champs dynamiques
     const usefulCourses = Array.from(document.querySelectorAll('input[name="useful-courses"]:checked')).map(input => input.value).join(', ');
     const usefulTools = Array.from(document.querySelectorAll('input[name="useful-tools"]:checked')).map(input => input.value).join(', ');
 
@@ -223,6 +223,7 @@ function submitForm() {
         alert("Erreur réseau : " + error.message);
     });
 }
+</script>
     </script>
 </body>
 </html>
