@@ -157,12 +157,11 @@
 
     <script>
         function nextPage(pageNumber) {
-            updateUsefulCourses();
-            updateUsefulTools();
-            document.querySelectorAll('.container').forEach(container => container.classList.add('hidden'));
-            document.getElementById('page' + pageNumber).classList.remove('hidden');
-        }
-
+    if (pageNumber === 2) updateUsefulCourses();
+    if (pageNumber === 3) updateUsefulTools();
+    document.querySelectorAll('.container').forEach(container => container.classList.add('hidden'));
+    document.getElementById('page' + pageNumber).classList.remove('hidden');
+}
         function prevPage(pageNumber) {
             document.querySelectorAll('.container').forEach(container => container.classList.add('hidden'));
             document.getElementById('page' + pageNumber).classList.remove('hidden');
@@ -189,30 +188,30 @@
                 usefulToolsDiv.appendChild(label);
             });
         }
+function submitForm() {
+    const formData = new FormData();
 
-      function submitForm() {
-    const formData = new FormData();
-    formData.append('courses', Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(input => input.value).join(', '));
-    formData.append('useful-courses', Array.from(document.querySelectorAll('input[name="useful-courses"]:checked')).map(input => input.value).join(', '));
-    formData.append('tools', Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(input => input.value).join(', '));
-    formData.append('useful-tools', Array.from(document.querySelectorAll('input[name="useful-tools"]:checked')).map(input => input.value).join(', '));
-    formData.append('evolution', document.querySelector('input[name="evolution"]:checked')?.value || '');
-    formData.append('knowledge', document.querySelector('input[name="knowledge"]:checked')?.value || '');
-    formData.append('comments', document.querySelector('textarea[name="comments"]').value);
+    formData.append('courses', Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(input => input.value).join(', '));
+    formData.append('useful-courses', Array.from(document.querySelectorAll('input[name="useful-courses"]:checked')).map(input => input.value).join(', '));
+    formData.append('tools', Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(input => input.value).join(', '));
+    formData.append('useful-tools', Array.from(document.querySelectorAll('input[name="useful-tools"]:checked')).map(input => input.value).join(', '));
+    formData.append('evolution', document.querySelector('input[name="evolution"]:checked')?.value || '');
+    formData.append('knowledge', document.querySelector('input[name="knowledge"]:checked')?.value || '');
+    formData.append('comments', document.querySelector('textarea[name="comments"]').value);
 
-    fetch("https://script.google.com/macros/s/AKfycbyV9rxJaK-isf4UbiVL3mQcQzOKirbCvTHN_cC85jruVtQ9GbM7M2xg1kIl82cc898Ljg/exec", {
-        method: "POST",
-        body: formData
-    }).then(response => {
-        if (response.ok) {
-            document.querySelectorAll('.container').forEach(container => container.classList.add('hidden'));
-            document.getElementById('thankyou').classList.remove('hidden');
-        } else {
-            alert("Erreur lors de l'envoi du formulaire.");
-        }
-    }).catch(error => {
-        alert("Erreur réseau : " + error.message);
-    });
+    fetch("https://script.google.com/macros/s/AKfycbyV9rxJaK-isf4UbiVL3mQcQzOKirbCvTHN_cC85jruVtQ9GbM7M2xg1kIl82cc898Ljg/exec", {
+        method: "POST",
+        body: formData
+    }).then(response => {
+        if (response.ok) {
+            document.querySelectorAll('.container').forEach(container => container.classList.add('hidden'));
+            document.getElementById('thankyou').classList.remove('hidden');
+        } else {
+            alert("Erreur lors de l'envoi du formulaire.");
+        }
+    }).catch(error => {
+        alert("Erreur réseau : " + error.message);
+    });
 }
     </script>
 </body>
