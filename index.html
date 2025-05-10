@@ -190,8 +190,7 @@
             });
         }
 
-     <script>
-function submitForm() {
+      function submitForm() {
     const formData = new FormData();
     formData.append('courses', Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(input => input.value).join(', '));
     formData.append('useful-courses', Array.from(document.querySelectorAll('input[name="useful-courses"]:checked')).map(input => input.value).join(', '));
