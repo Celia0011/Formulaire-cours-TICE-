@@ -200,25 +200,25 @@ function submitForm() {
     }
 
     const formData = {
-        courses: Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(input => input.value).join(', '),
-        usefulCourses: Array.from(document.querySelectorAll('input[name="useful-courses"]:checked')).map(input => input.value).join(', '),
-        tools: Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(input => input.value).join(', '),
-        usefulTools: Array.from(document.querySelectorAll('input[name="useful-tools"]:checked')).map(input => input.value).join(', '),
+        courses: Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(i => i.value).join(', '),
+        usefulCourses: Array.from(document.querySelectorAll('input[name="useful-courses"]:checked')).map(i => i.value).join(', '),
+        tools: Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(i => i.value).join(', '),
+        usefulTools: Array.from(document.querySelectorAll('input[name="useful-tools"]:checked')).map(i => i.value).join(', '),
         evolution: evolution.value,
         knowledge: knowledge.value,
         comments: document.querySelector('textarea[name="comments"]').value
     };
 
-    fetch('https://script.google.com/macros/s/AKfycbwZT5vdyD5oU-FNeSksc5Yc1BwPbysEKxdRHcnIJpEaK-085xNS0mO70ESmwSl1ex835w/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbzxApYr9JKt1Z7upNV2_WIcmVxhg8y5wFHfoTRaD2dkrC59DI0orwKct9xQ7mYZyrEORQ/exec', {
         method: 'POST',
-        body: JSON.stringify(formData),
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify(formData)
     })
     .then(response => response.text())
     .then(data => {
-        document.querySelectorAll('.container').forEach(container => container.classList.add('hidden'));
+        document.querySelectorAll('.container').forEach(c => c.classList.add('hidden'));
         document.getElementById('thankyou').classList.remove('hidden');
     })
     .catch(error => {
