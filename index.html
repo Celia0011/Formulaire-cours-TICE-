@@ -193,22 +193,14 @@
      <script>
 function submitForm() {
     const formData = new FormData();
-
-    // Champs classiques
     formData.append('courses', Array.from(document.querySelectorAll('input[name="courses"]:checked')).map(input => input.value).join(', '));
+    formData.append('useful-courses', Array.from(document.querySelectorAll('input[name="useful-courses"]:checked')).map(input => input.value).join(', '));
     formData.append('tools', Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(input => input.value).join(', '));
+    formData.append('useful-tools', Array.from(document.querySelectorAll('input[name="useful-tools"]:checked')).map(input => input.value).join(', '));
     formData.append('evolution', document.querySelector('input[name="evolution"]:checked')?.value || '');
     formData.append('knowledge', document.querySelector('input[name="knowledge"]:checked')?.value || '');
     formData.append('comments', document.querySelector('textarea[name="comments"]').value);
 
-    // Champs dynamiques
-    const usefulCourses = Array.from(document.querySelectorAll('input[name="useful-courses"]:checked')).map(input => input.value).join(', ');
-    const usefulTools = Array.from(document.querySelectorAll('input[name="useful-tools"]:checked')).map(input => input.value).join(', ');
-
-    formData.append('useful-courses', usefulCourses);
-    formData.append('useful-tools', usefulTools);
-
-    // Envoi vers Google Apps Script
     fetch("https://script.google.com/macros/s/AKfycbyV9rxJaK-isf4UbiVL3mQcQzOKirbCvTHN_cC85jruVtQ9GbM7M2xg1kIl82cc898Ljg/exec", {
         method: "POST",
         body: formData
@@ -223,7 +215,6 @@ function submitForm() {
         alert("Erreur réseau : " + error.message);
     });
 }
-</script>
     </script>
 </body>
 </html>
